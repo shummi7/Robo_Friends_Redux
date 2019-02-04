@@ -40,7 +40,14 @@ class App extends Component {
   // searchChangeFunc=(event)=>{
   //       this.setState({searchField:event.target.value});
   //    }
-
+  descFunction=()=>{
+    var describe=document.getElementsByClassName('describe')[0];
+    describe.style.visibility='visible';
+  }
+  closeFunc=()=>{
+    var describe=document.getElementsByClassName('describe')[0];
+    describe.style.visibility='hidden';
+  }
   render() {
 
     const filteredRobots=this.state.robots.filter(robot=>{
@@ -52,6 +59,12 @@ class App extends Component {
       (
       <div className = 'tc'>
       <h1>ROBOFRIENDS</h1>
+      <p className='que' onClick={this.descFunction}><span>&#10068;</span></p>
+      <div className='describe'>
+     <p> It is  a responsive application made with React that dynamically searches Robot contact cards with input. The
+contact data are fetched from JSON file and used RoboHash API to make custom robots. The search function is integrated with Redux to manage the states.
+</p>
+<button className='close' onClick={this.closeFunc}>CLOSE</button></div>
       <Searchbox searchChange = {this.props.searchChangeFunc}/>
       <Scroll>
       <CardBox   robots       = {filteredRobots}/>
